@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import { motion } from "framer-motion"
-import AnimatedGradientBorder from "./animated-gradient-border"
-import GlitchText from "./glitch-text"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import AnimatedGradientBorder from "./animated-gradient-border";
+import GlitchText from "./glitch-text";
 
 export default function Hero() {
-  const [text, setText] = useState("")
-  const fullText = "Developer. AI Prompter. Problem Solver."
+  const [text, setText] = useState("");
+  const fullText = "Developer. AI Prompter. Problem Solver.";
 
   useEffect(() => {
-    let index = 0
+    let index = 0;
     const timer = setInterval(() => {
-      setText(fullText.substring(0, index))
-      index++
+      setText(fullText.substring(0, index));
+      index++;
       if (index > fullText.length) {
-        clearInterval(timer)
+        clearInterval(timer);
       }
-    }, 100)
+    }, 100);
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative py-20 md:py-32 px-4 overflow-hidden">
@@ -34,7 +34,7 @@ export default function Hero() {
           className="text-center"
         >
           <h1 className="text-4xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-teal-300">
-            <GlitchText text="Ned Boudeli" glitchInterval={7000} />
+            Ned Boudeli
           </h1>
 
           <div className="h-12 mb-8">
@@ -45,8 +45,9 @@ export default function Hero() {
           </div>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            Crafting exceptional digital experiences through code and AI-powered solutions. Turning complex problems
-            into elegant, efficient solutions.
+            Crafting exceptional digital experiences through code and AI-powered
+            solutions. Turning complex problems into elegant, efficient
+            solutions.
           </p>
 
           <AnimatedGradientBorder className="inline-block p-[2px] mx-auto">
@@ -66,6 +67,5 @@ export default function Hero() {
 
       <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-full max-w-7xl h-32 bg-gradient-to-r from-primary/10 via-teal-300/10 to-primary/10 blur-3xl rounded-full" />
     </section>
-  )
+  );
 }
-
