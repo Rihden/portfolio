@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedGradientBorder from "./animated-gradient-border";
-import GlitchText from "./glitch-text";
+import Link from "next/link";
 
 export default function Hero() {
   const [text, setText] = useState("");
@@ -23,6 +23,17 @@ export default function Hero() {
 
     return () => clearInterval(timer);
   }, []);
+
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="relative py-20 md:py-32 px-4 overflow-hidden">
@@ -52,14 +63,24 @@ export default function Hero() {
 
           <AnimatedGradientBorder className="inline-block p-[2px] mx-auto">
             <div className="flex flex-col sm:flex-row gap-4 justify-center bg-background rounded-lg p-2">
-              <Button size="lg" className="group">
-                View Projects
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button size="lg" variant="outline" className="group">
-                Contact Me
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <a
+                href="#projects"
+                onClick={(e) => handleSmoothScroll(e, "projects")}
+              >
+                <Button size="lg" className="group">
+                  View Projects
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => handleSmoothScroll(e, "contact")}
+              >
+                <Button size="lg" variant="outline" className="group">
+                  Contact Me
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </a>
             </div>
           </AnimatedGradientBorder>
         </motion.div>

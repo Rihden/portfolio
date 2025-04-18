@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
+      setIsSubmitting(false);
+      setIsSubmitted(true);
 
       // Reset form after 3 seconds
       setTimeout(() => {
-        setIsSubmitted(false)
-      }, 3000)
-    }, 1500)
-  }
+        setIsSubmitted(false);
+      }, 3000);
+    }, 1500);
+  };
 
   return (
     <section id="contact" className="py-20 px-4 bg-muted/30">
@@ -43,7 +43,8 @@ export default function Contact() {
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
           <div className="h-1 w-20 bg-primary mx-auto mb-8 rounded-full"></div>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Have a project in mind or want to discuss how we can work together? Feel free to reach out!
+            Have a project in mind or want to discuss how we can work together?
+            Feel free to reach out!
           </p>
         </motion.div>
 
@@ -66,7 +67,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-medium mb-1">Email</h4>
-                      <p className="text-muted-foreground text-sm">ned@example.com</p>
+                      <p className="text-muted-foreground text-sm">
+                        nedhirboudeli@gmail.com
+                      </p>
                     </div>
                   </div>
 
@@ -76,7 +79,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-medium mb-1">Phone</h4>
-                      <p className="text-muted-foreground text-sm">+1 (555) 123-4567</p>
+                      <p className="text-muted-foreground text-sm">
+                        +216 52 098 686
+                      </p>
                     </div>
                   </div>
 
@@ -86,7 +91,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-medium mb-1">Location</h4>
-                      <p className="text-muted-foreground text-sm">San Francisco, CA</p>
+                      <p className="text-muted-foreground text-sm">
+                        Tunis, Tunisia
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -94,7 +101,7 @@ export default function Contact() {
                 <div className="mt-8">
                   <h4 className="font-medium mb-3">Connect with me</h4>
                   <div className="flex space-x-3">
-                    {["github", "twitter", "linkedin", "dribbble"].map((social) => (
+                    {["github", "linkedin", "upwork"].map((social) => (
                       <a
                         key={social}
                         href="#"
@@ -102,7 +109,9 @@ export default function Contact() {
                       >
                         <span className="sr-only">{social}</span>
                         <div className="w-5 h-5 flex items-center justify-center">
-                          <span className="text-xs font-bold text-primary">{social.charAt(0).toUpperCase()}</span>
+                          <span className="text-xs font-bold text-primary">
+                            {social.charAt(0).toUpperCase()}
+                          </span>
                         </div>
                       </a>
                     ))}
@@ -129,7 +138,12 @@ export default function Contact() {
                       <label htmlFor="name" className="text-sm font-medium">
                         Name
                       </label>
-                      <Input id="name" placeholder="Your name" required disabled={isSubmitting || isSubmitted} />
+                      <Input
+                        id="name"
+                        placeholder="Your name"
+                        required
+                        disabled={isSubmitting || isSubmitted}
+                      />
                     </div>
 
                     <div className="space-y-2">
@@ -150,7 +164,12 @@ export default function Contact() {
                     <label htmlFor="subject" className="text-sm font-medium">
                       Subject
                     </label>
-                    <Input id="subject" placeholder="Subject" required disabled={isSubmitting || isSubmitted} />
+                    <Input
+                      id="subject"
+                      placeholder="Subject"
+                      required
+                      disabled={isSubmitting || isSubmitted}
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -166,7 +185,11 @@ export default function Contact() {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={isSubmitting || isSubmitted}>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isSubmitting || isSubmitted}
+                  >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -188,6 +211,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

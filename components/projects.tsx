@@ -4,15 +4,16 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Figma } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedGradientBorder from "./animated-gradient-border";
 
 const projects = [
   {
     title: "Fanticket platform",
     description:
-      "A responsive platform for buying and selling event tickets between fans. I was mostly involved with the frontend, a little bit of the backend. A highlight would be the implementation of a custom responsive steps slider that showcases process of using chatbot to buy and sell in detail.",
+      "A responsive platform for buying and selling event tickets between fans. I was mostly involved with the frontend. A highlight would be the implementation of a custom responsive steps slider that showcases process of using chatbot to buy and sell in detail. The design didn't have mobile version, so I had to come up with a solution to make it responsive.",
     image: "/fanticket-preview.png",
     tags: [
       "TypeScript",
@@ -23,7 +24,26 @@ const projects = [
       "Webpack",
     ],
     demoLink: "https://fantiket-preview.vercel.app/",
-    githubLink: "#",
+    design: "/design/fanticket",
+  },
+  {
+    title: "PDF generator of VIN car report for MotorIQ",
+    description:
+      "A script used in MotorIQ app to to generate PDF files for cars VIN reports based on a figma design. The script generates pages and sections dynamically, supports Metric/imperial units of measure, EN/FR/IT/DE/ES languages, modular code using reusable snippets, generates charts using chart.js and leverages pdfmonkey.io's API and webhooks.",
+    image: "/motor-iq preview.png",
+    tags: ["Liquid", "TailwindCSS", "Pdfmonkey.io", "Chart.js", "Webhooks"],
+    demoLink: "/motor-iq preview.pdf",
+    githubLink: "https://github.com/Rihden/pdf-generator-motoriq",
+    design: "/design/motor-iq",
+  },
+
+  {
+    title: "Bioflorin website",
+    description:
+      "A website for Bioflorin® owned by Swiss pharmaceutical company Sanofi-Aventis, I worked on this project as a webdev contractor for the german company Illume.de. The website is built with Next.js, TypeScript, Tailwind CSS, and uses i18n for internationalization.",
+    image: "/bioflorin preview.png",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "i18n"],
+    demoLink: "https://www.bioflorin.ch/de/",
   },
   {
     title: "One day Chess challenge",
@@ -33,24 +53,6 @@ const projects = [
     tags: ["JavaScript", "React", "CSS"],
     demoLink: "https://chess-react-five.vercel.app/",
     githubLink: "https://github.com/Rihden/chess-react",
-  },
-  {
-    title: "Prompt Marketplace",
-    description:
-      "A platform for sharing and discovering effective AI prompts across different domains. Users can rate, comment, and build upon existing prompts.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["React", "Node.js", "MongoDB", "GraphQL"],
-    demoLink: "#",
-    githubLink: "#",
-  },
-  {
-    title: "AI Content Generator",
-    description:
-      "A tool that helps content creators generate blog posts, social media content, and marketing copy using AI. Includes SEO optimization and tone customization.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Next.js", "TypeScript", "AI APIs", "Tailwind CSS"],
-    demoLink: "#",
-    githubLink: "#",
   },
 ];
 
@@ -129,21 +131,36 @@ export default function Projects() {
                           Live Demo
                         </a>
                       </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="group"
-                        asChild
-                      >
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                      {project.design && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="group"
+                          asChild
                         >
-                          <Github className="h-4 w-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
+                          <Link href={project.design}>
+                            <Figma className="mr-2 h-4 w-4" />
+                            Design
+                          </Link>
+                        </Button>
+                      )}
+                      {project.githubLink && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="group"
+                          asChild
+                        >
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github className="h-4 w-4 mr-2" />
+                            Code
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -159,10 +176,12 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <Button variant="outline" className="group">
-            View All Projects
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="outline" className="group">
+              View All Projects
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>
